@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: python-webapp
+  name: python-webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: python-webapp
+  template:
+    metadata:
+      labels:
+        app: python-webapp
+    spec:
+      containers:
+      - image: rotoku/python-webapp:latest
+        name: python-webapp
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "0.5"
+            memory: 256Mi
+          limits:
+            cpu: "0.5"
+            memory: 256Mi            
+        imagePullPolicy: Always
