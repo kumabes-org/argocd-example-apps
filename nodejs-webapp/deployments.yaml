@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nodejs-webapp
+  name: nodejs-webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nodejs-webapp
+  template:
+    metadata:
+      labels:
+        app: nodejs-webapp
+    spec:
+      containers:
+      - image: rotoku/nodejs-webapp:latest
+        name: nodejs-webapp
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "0.5"
+            memory: 256Mi
+          limits:
+            cpu: "0.5"
+            memory: 256Mi            
+        imagePullPolicy: Always
