@@ -2,21 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: nodejs-webapp
-  name: nodejs-webapp
+    app: java-webapp
+  name: java-webapp
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nodejs-webapp
+      app: java-webapp
   template:
     metadata:
       labels:
-        app: nodejs-webapp
+        app: java-webapp
     spec:
       containers:
-      - image: rotoku/nodejs-webapp:latest
-        name: nodejs-webapp
+      - image: rotoku/java-webapp:latest
+        name: java-webapp
         ports:
         - containerPort: 80
         resources:
